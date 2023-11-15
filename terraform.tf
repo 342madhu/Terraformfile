@@ -1,4 +1,5 @@
-Step 2: Define Variables in variables.tf
+#Step 2: Define Variables in
+variables.tf
 variable "aws_region" {
   description = "AWS region where resources will be deployed"
 }
@@ -21,7 +22,8 @@ variable "ami_id" {
 
 # Add more variables as needed
 
-Step 3: VPC Configuration in vpc.tf
+#Step 3: VPC Configuration in 
+vpc.tf
 resource "aws_vpc" "main" {
   cidr_block = var.vpc_cidr
   enable_dns_support = true
@@ -45,7 +47,8 @@ resource "aws_security_group" "web_sg" {
 
   # Define security group rules as needed for web application
 }
-Step 5: Load Balancer Configuration in load_balancer.tf
+#Step 5: Load Balancer Configuration in 
+load_balancer.tf
 resource "aws_lb" "web_lb" {
   name               = "web-lb"
   internal           = false
@@ -72,12 +75,12 @@ resource "aws_autoscaling_group" "web_asg" {
   force_delete               = true
   wait_for_capacity_timeout = "0"
 } } 
-Step 7: User Data Script and Ansible Playbook
+#Step 7: User Data Script and Ansible Playbook
 Create user_data.sh to install and configure the web server using Ansible.
 #!/bin/bash
-# Add commands to install and configure the web server using Ansible
+Add commands to install and configure the web server using Ansible
 Create ansible_playbook.yml with your Ansible playbook.
-Step 8: Route 53 Private Hosted Zone and Certificate Configuration
+#Step 8: Route 53 Private Hosted Zone and Certificate Configuration
 resource "aws_route53_zone" "private_zone" {
   name            = "example.com"
   vpc {
